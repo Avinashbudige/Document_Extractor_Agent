@@ -41,7 +41,7 @@ This implementation plan follows a 7-phase build order to create a production-re
     - Test indexes and foreign keys
     - _Requirements: 9.1_
 
-  - [-] 1.5 Create FastAPI application skeleton with router structure
+  - [x] 1.5 Create FastAPI application skeleton with router structure
     - Set up main FastAPI app with CORS, error handlers
     - Create routers: documents_router, extractions_router, batches_router, health_router
     - Implement basic health check endpoint (GET /v1/health)
@@ -51,7 +51,7 @@ This implementation plan follows a 7-phase build order to create a production-re
     - **Property 47: Health Check Status**
     - **Validates: Requirements 17.4**
 
-  - [ ] 1.7 Set up SQLAlchemy models and database session management
+  - [-] 1.7 Set up SQLAlchemy models and database session management
     - Create Document, Extraction, ExtractionAuditLog, Batch models
     - Implement database session dependency for FastAPI
     - Create connection pooling configuration

@@ -68,7 +68,7 @@ class Document(Base):
     )
 
     # Source metadata (JSONB for flexibility)
-    metadata: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
+    source_metadata: Mapped[Optional[dict]] = mapped_column("metadata", JSONB, nullable=True)
 
     # Audit
     uploaded_by: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)

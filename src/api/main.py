@@ -8,6 +8,7 @@ import logging
 from typing import AsyncGenerator
 
 from src.api.routers import documents, extractions, batches, health
+from src.storage.database import close_db_connections, get_db_health
 
 # Configure logging
 logging.basicConfig(
@@ -22,9 +23,20 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Handle application startup and shutdown events."""
     # Startup
     logger.info("Starting Document Extraction Agent API")
+    
+    # Check database connectivity
+    db_healthy = get_db_health()
+    if db_healthy:
+        logger.info("Database connection verified")
+    else:
+        logger.warning("Database connection check failed - proceeding with caution")
+    
     yield
+    
     # Shutdown
     logger.info("Shutting down Document Extraction Agent API")
+    close_db_connections()
+    logger.info("Database connections closed")
 
 
 # Create FastAPI application
