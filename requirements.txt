@@ -10,7 +10,7 @@ langchain-openai==0.2.14
 python-multipart==0.0.20
 pydantic==2.10.5
 pydantic-settings==2.7.1
-python-dotenv==1.0.1
+python-dotenv==1.2.2
 alembic==1.14.0
 
 # Development dependencies
