@@ -64,6 +64,7 @@ dmypy.json
 .ipynb_checkpoints/
 *.ipynb
 
+.kiro/
 # Logs
 *.log
 logs/
