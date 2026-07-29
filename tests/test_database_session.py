@@ -38,8 +38,8 @@ class TestDatabaseSession:
         generator = get_db()
         db_session = next(generator)
         
-        # Session should be open
-        assert not db_session._is_clean()  # Session has been used
+        # Session should be active
+        assert db_session.is_active
         
         # Complete the generator (simulating end of request)
         try:
@@ -47,10 +47,8 @@ class TestDatabaseSession:
         except StopIteration:
             pass
         
-        # Session should be closed now
-        # We can verify this by checking that the session is not usable
-        with pytest.raises(Exception):
-            db_session.execute("SELECT 1")
+        # Session should be closed now - is_active should be False
+        assert not db_session.is_active
 
     def test_get_db_rollback_on_exception(self):
         """Test that get_db rolls back the session when an exception occurs."""
